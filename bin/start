@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# A wrapper
+#
+
+ORG=`pwd`
+CUR="${BASH_SOURCE[0]}";
+if([ -h "${CUR}" ]) then
+  while([ -h "${CUR}" ]) do CUR=`readlink "${CUR}"`; done
+fi
+pushd . > /dev/null
+cd `dirname ${CUR}` > /dev/null
+CUR=`pwd`;
+popd  > /dev/null
+
+cd ${CUR}/../
+java -server -jar target/gseg-standalone.jar -Xmx10g >/dev/null 2>/dev/null &
+cd ${ORG}

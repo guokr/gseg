@@ -1,0 +1,14 @@
+.DS_Store
+
+pom.xml
+*jar
+/lib/
+/classes/
+/target/
+.lein-deps-sum
+.lein-repl-history
+
+/target
+log/pid
+log/*.log
+log/*.log*
