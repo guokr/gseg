@@ -14,5 +14,5 @@ CUR=`pwd`;
 popd  > /dev/null
 
 cd ${CUR}/../
-java -server -jar target/gseg-standalone.jar -Xmx10g >/dev/null 2>/dev/null &
+java -server -jar target/gseg-standalone.jar -Xmx4g >/dev/null 2>/dev/null &
 cd ${ORG}
