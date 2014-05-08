@@ -35,9 +35,9 @@
 (defn gseg [seg-pool mon-queue request]
   (let [appkey (get-in request [:params :appkey])
         invkey (get-in request [:params :invkey])]
-    (if (not (and appkey invkey))
+    (if (nil? appkey)
       {:status 401 :headers {"Content-Type" "text/plain; charset=utf-8"}
-       :body "appkey and invkey can not be empty"}
+       :body "appkey can not be empty"}
       (let [seged (with-open [rdr (clojure.java.io/reader (:body request))]
                     (doall (cp/pmap seg-pool seg (line-seq rdr))))]
         (.put mon-queue [appkey invkey seged])
